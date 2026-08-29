@@ -1,0 +1,13 @@
+fastapi
+uvicorn[standard]
+python-multipart
+paddleocr
+paddlepaddle
+groq
+opencv-python-headless
+numpy
+Pillow
+reportlab
+pymongo
+python-dotenv
+cloudinary

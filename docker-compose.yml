@@ -1,4 +1,5 @@
 services:
+<<<<<<< HEAD
   mongo:
     image: mongo:7
     ports:
@@ -7,6 +8,8 @@ services:
       - mongo_data:/data/db
     restart: unless-stopped
 
+=======
+>>>>>>> origin/main
   ai-service:
     build:
       context: ./ai-service
@@ -14,8 +17,11 @@ services:
       - ./ai-service/.env
     ports:
       - "8000:8000"
+<<<<<<< HEAD
     depends_on:
       - mongo
+=======
+>>>>>>> origin/main
     restart: unless-stopped
 
   backend:
@@ -27,7 +33,10 @@ services:
       PYTHON_SERVICE_URL: http://ai-service:8000
     depends_on:
       - ai-service
+<<<<<<< HEAD
       - mongo
+=======
+>>>>>>> origin/main
     ports:
       - "5000:5000"
     restart: unless-stopped
@@ -42,6 +51,9 @@ services:
     ports:
       - "5173:80"
     restart: unless-stopped
+<<<<<<< HEAD
 
 volumes:
   mongo_data:
+=======
+>>>>>>> origin/main

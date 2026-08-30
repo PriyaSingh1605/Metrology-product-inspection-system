@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+  html {
+    font-family: 'Inter', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    color-scheme: light;
+  }
+}
+
+/* ─── CSS Design Tokens ─────────────────────────────────────────────────── */
+:root {
+  --brand-primary: #2563eb;
+  --brand-hover:   #1d4ed8;
+  --brand-glow:    rgba(37, 99, 235, 0.2);
+
+  --emerald:       #10b981;
+  --emerald-bg:    rgba(16, 185, 129, 0.1);
+  --rose:          #f43f5e;
+  --rose-bg:       rgba(244, 63, 94, 0.1);
+  --amber:         #f59e0b;
+  --amber-bg:      rgba(245, 158, 11, 0.1);
+  --indigo:        #6366f1;
+  --indigo-bg:     rgba(99, 102, 241, 0.1);
+
+  --bg-page:       #f1f5f9;
+  --bg-card:       #ffffff;
+  --border-color:  #e2e8f0;
+  --text-primary:  #0f172a;
+  --text-secondary:#475569;
+  --text-muted:    #94a3b8;
+
+  --sidebar-bg:    #0f172a;
+  --sidebar-text:  #cbd5e1;
+  --sidebar-active:#2563eb;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.05);
+  --shadow-lg: 0 10px 30px rgba(0,0,0,0.1), 0 4px 12px rgba(0,0,0,0.06);
+}
+
+/* ─── Status Badge Helpers ─────────────────────────────────────────────── */
+.badge-compliant   { background: var(--emerald-bg); color: var(--emerald); border: 1px solid rgba(16,185,129,0.3); }
+.badge-noncompliant{ background: var(--rose-bg);    color: var(--rose);    border: 1px solid rgba(244,63,94,0.3); }
+.badge-review      { background: var(--amber-bg);   color: var(--amber);   border: 1px solid rgba(245,158,11,0.3); }
+
+/* ─── Card Component ────────────────────────────────────────────────────── */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ─── Compliance Summary Banner ─────────────────────────────────────────── */
+.compliance-banner {
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  border: 1px solid;
+}
+.compliance-banner.compliant   { background: var(--emerald-bg); border-color: rgba(16,185,129,0.3); }
+.compliance-banner.noncompliant{ background: var(--rose-bg);    border-color: rgba(244,63,94,0.3); }
+.compliance-banner.review      { background: var(--amber-bg);   border-color: rgba(245,158,11,0.3); }
+
+/* ─── Rule Checks Table ─────────────────────────────────────────────────── */
+.rule-row-pass { background: rgba(16,185,129,0.04); }
+.rule-row-fail { background: rgba(244,63,94,0.04); }
+.rule-row-warn { background: rgba(245,158,11,0.04); }
+
+/* ─── OCR Viewer ─────────────────────────────────────────────────────────── */
+.ocr-panel {
+  font-family: 'Fira Code', 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  line-height: 1.6;
+  background: #0f172a;
+  color: #94a3b8;
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  max-height: 320px;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* ─── Loading Progress ───────────────────────────────────────────────────── */
+@keyframes pulse-glow {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; }
+}
+.animate-pulse-glow { animation: pulse-glow 1.8s ease-in-out infinite; }
+
+/* ─── Stat Card ─────────────────────────────────────────────────────────── */
+.stat-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.5rem;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.stat-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+/* ─── Upload Drop Zone ───────────────────────────────────────────────────── */
+.drop-zone {
+  border: 2px dashed var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+.drop-zone:hover, .drop-zone.drag-over {
+  border-color: var(--brand-primary);
+  background: rgba(37, 99, 235, 0.04);
+}
+
+/* ─── Sidebar ────────────────────────────────────────────────────────────── */
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.625rem 1rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--sidebar-text);
+  transition: background 0.15s, color 0.15s;
+  text-decoration: none;
+}
+.sidebar-link:hover { background: rgba(255,255,255,0.06); color: #fff; }
+.sidebar-link.active { background: var(--sidebar-active); color: #fff; }
+
+/* ─── Scrollbar polish ───────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+/* ─── Animations ─────────────────────────────────────────────────────────── */
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in { animation: fade-in-up 0.35s ease-out both; }
+
+/* ─── Progress Bar ───────────────────────────────────────────────────────── */
+.progress-bar-track {
+  width: 100%;
+  height: 8px;
+  background: var(--border-color);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+.progress-bar-fill {
+  height: 100%;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, var(--brand-primary), var(--indigo));
+  transition: width 0.4s ease;
+}

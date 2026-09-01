@@ -68,7 +68,7 @@ export default function Dashboard() {
           <h1 className="text-2xl font-bold text-slate-800">Enforcement Dashboard</h1>
           <p className="text-slate-500 text-sm mt-1">Legal Metrology (Packaged Commodities) Rules, 2011 — Compliance Overview</p>
         </div>
-        <Link to="/inspections/new" id="new-inspection-btn"
+        <Link to="/dashboard/inspections/new" id="new-inspection-btn"
           className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-colors shadow-sm">
           <PlusCircle size={17} />New Inspection
         </Link>
@@ -162,13 +162,13 @@ export default function Dashboard() {
           <div className="card overflow-hidden">
             <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100">
               <h2 className="text-base font-semibold text-slate-800">Recent Inspections</h2>
-              <Link to="/inspections" className="text-sm text-blue-600 hover:underline font-medium">View all</Link>
+              <Link to="/dashboard/inspections" className="text-sm text-blue-600 hover:underline font-medium">View all</Link>
             </div>
             {!stats.recent_inspections?.length ? (
               <div className="py-16 text-center">
                 <Package size={40} className="mx-auto text-slate-300 mb-3" />
                 <p className="text-slate-500 text-sm">No inspections yet.</p>
-                <Link to="/inspections/new" className="mt-3 inline-block text-sm text-blue-600 hover:underline">Create your first inspection</Link>
+                <Link to="/dashboard/inspections/new" className="mt-3 inline-block text-sm text-blue-600 hover:underline">Create your first inspection</Link>
               </div>
             ) : (
               <ul className="divide-y divide-slate-100">
@@ -180,7 +180,7 @@ export default function Dashboard() {
                     </div>
                     <div className="flex items-center gap-4">
                       <ComplianceBadge status={item.compliance_status || item.status} />
-                      <Link to={`/inspections/${item.inspection_id}`} className="text-sm text-blue-600 hover:underline font-medium">View</Link>
+                      <Link to={`/dashboard/inspections/${item.inspection_id}`} className="text-sm text-blue-600 hover:underline font-medium">View</Link>
                     </div>
                   </li>
                 ))}

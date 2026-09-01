@@ -148,7 +148,7 @@ export default function AdminOfficerDetail() {
                           <StatusBadge status={scan.complianceStatus} />
                         </td>
                         <td className="px-4 py-3.5 text-right">
-                          <Link to={`/inspections/${scan.inspection_id || scan.id}`}
+                          <Link to={`/dashboard/inspections/${scan.inspection_id || scan.id}`}
                             className="inline-flex items-center gap-1 text-xs text-blue-600 hover:underline font-medium"
                             target="_blank" rel="noreferrer">
                             View <ExternalLink size={11} />

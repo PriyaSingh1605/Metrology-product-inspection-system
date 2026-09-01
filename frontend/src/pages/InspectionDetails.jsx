@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import api from '../services/api';
-import { Loader2, AlertCircle, ChevronLeft, Trash2 } from 'lucide-react';
+import { Loader2, AlertCircle, ChevronLeft, Trash2, UserRound, CalendarDays } from 'lucide-react';
 import ComplianceSummary from '../components/ComplianceSummary';
 import ViolationsWarnings from '../components/ViolationsWarnings';
 import FontSizeAnalysisCard from '../components/FontSizeAnalysisCard';
@@ -32,7 +32,7 @@ export default function InspectionDetails() {
     setDeleting(true);
     try {
       await api.delete(`/api/inspections/${id}`);
-      navigate('/inspections');
+      navigate('/dashboard/inspections');
     } catch {
       setError('Failed to delete inspection.');
       setDeleting(false);
@@ -91,6 +91,10 @@ export default function InspectionDetails() {
             <span>·</span>
             <span>{createdAt}</span>
             {inspection.location && <><span>·</span><span>{inspection.location}</span></>}
+          </div>
+          <div className="flex flex-wrap gap-x-5 gap-y-2 mt-3 text-sm text-slate-600">
+            <span className="inline-flex items-center gap-1.5"><UserRound size={15} className="text-blue-600" />Checked by: <b>{inspection.inspector_name || '—'}</b></span>
+            <span className="inline-flex items-center gap-1.5"><CalendarDays size={15} className="text-blue-600" />Checked on: <b>{createdAt}</b></span>
           </div>
         </div>
         <button id="delete-btn" onClick={handleDelete} disabled={deleting}

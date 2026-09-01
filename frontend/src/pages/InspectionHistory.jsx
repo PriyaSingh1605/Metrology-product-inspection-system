@@ -61,7 +61,7 @@ export default function InspectionHistory() {
           <h1 className="text-2xl font-bold text-slate-800">Inspection Archive</h1>
           <p className="text-slate-500 text-sm mt-1">{total} total inspection record{total !== 1 ? 's' : ''}</p>
         </div>
-        <Link to="/inspections/new"
+        <Link to="/dashboard/inspections/new"
           className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-colors shadow-sm">
           <PlusCircle size={17} />New Inspection
         </Link>
@@ -113,7 +113,7 @@ export default function InspectionHistory() {
               {search || statusFilter !== 'ALL' ? 'No inspections match your filters.' : 'No inspections found.'}
             </p>
             {!search && statusFilter === 'ALL' && (
-              <Link to="/inspections/new" className="mt-3 inline-block text-sm text-blue-600 hover:underline">
+              <Link to="/dashboard/inspections/new" className="mt-3 inline-block text-sm text-blue-600 hover:underline">
                 Create your first inspection
               </Link>
             )}
@@ -142,7 +142,7 @@ export default function InspectionHistory() {
                       <ComplianceBadge status={item.compliance_status || item.status} />
                     </td>
                     <td className="px-4 py-3">
-                      <Link to={`/inspections/${item.inspection_id}`} className="text-sm text-blue-600 hover:underline font-medium">View</Link>
+                      <Link to={`/dashboard/inspections/${item.inspection_id}`} className="text-sm text-blue-600 hover:underline font-medium">View</Link>
                     </td>
                   </tr>
                 ))}

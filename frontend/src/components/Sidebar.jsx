@@ -1,7 +1,7 @@
-import { NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import {
-  LayoutDashboard, PlusCircle, ClipboardList, BookOpen, LogOut, ShieldCheck,
+  LayoutDashboard, PlusCircle, ClipboardList, BookOpen, LogOut, ShieldCheck, House, UserRound,
 } from 'lucide-react';
 
 const navItems = [
@@ -32,6 +32,9 @@ export default function Sidebar() {
 
       {/* Nav */}
       <nav className="flex-1 px-3 py-4 space-y-0.5 overflow-y-auto">
+        <NavLink to="/" end className="sidebar-link">
+          <House size={17} />Back to Home
+        </NavLink>
         {navItems.map(({ to, label, icon: Icon, end }) => (
           <NavLink key={to} to={to} end={end}
             className={({ isActive }) => `sidebar-link ${isActive ? 'active' : ''}`}
@@ -44,15 +47,15 @@ export default function Sidebar() {
 
       {/* User + Logout */}
       <div className="px-3 py-4 border-t border-white/10 space-y-1">
-        <div className="flex items-center gap-3 px-4 py-2.5">
+        <Link to="/profile" className="flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-white/10 transition-colors" title="Open profile">
           <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-sm font-bold shrink-0 text-white">
             {user?.name?.[0]?.toUpperCase() ?? 'O'}
           </div>
           <div className="overflow-hidden">
             <p className="text-sm font-medium text-white truncate">{user?.name || 'Officer'}</p>
-            <p className="text-xs text-slate-400 capitalize">{user?.role || 'Inspector'}</p>
+            <p className="text-xs text-slate-400 capitalize flex items-center gap-1"><UserRound size={11} />{user?.role || 'Inspector'}</p>
           </div>
-        </div>
+        </Link>
         <button onClick={handleLogout}
           className="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:bg-red-600 hover:text-white transition-colors">
           <LogOut size={17} />Logout

@@ -44,7 +44,7 @@ export default function InspectionCard({ inspection }) {
       </td>
       <td className="px-4 py-3">
         <Link
-          to={`/inspections/${inspection_id}`}
+          to={`/dashboard/inspections/${inspection_id}`}
           className="inline-flex items-center gap-1.5 text-sm text-blue-600 hover:text-blue-800 font-medium"
         >
           View <ExternalLink size={13} />

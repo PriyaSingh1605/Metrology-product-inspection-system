@@ -304,7 +304,7 @@ function InspectionForm({ imageFiles, qualityResults, onBack }) {
         <RawOcrViewer ocrText={result.ocr_text} visual={result.visual_analysis} />
         <div className="flex gap-3">
           <button
-            onClick={() => navigate(`/inspections/${inspectionId}`)}
+            onClick={() => navigate(`/dashboard/inspections/${inspectionId}`)}
             className="flex items-center gap-2 px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-lg transition-colors"
           >
             <FileText size={14} />View Full Report

@@ -1,10 +1,10 @@
-import { NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useEffect, useState } from 'react';
 import { getAdminApprovals } from '../services/api';
 import {
   LayoutDashboard, Users, ClipboardList, CheckSquare, LogOut,
-  ShieldAlert, FileCheck, XCircle,
+  ShieldAlert, FileCheck, XCircle, House, UserRound,
 } from 'lucide-react';
 
 export default function AdminSidebar() {
@@ -42,6 +42,9 @@ export default function AdminSidebar() {
 
       {/* Nav */}
       <nav className="flex-1 px-3 py-4 space-y-0.5 overflow-y-auto">
+        <NavLink to="/" end className="sidebar-link">
+          <House size={17} />Back to Home
+        </NavLink>
         <NavLink to="/admin" end
           className={({ isActive }) => `sidebar-link ${isActive ? 'active' : ''}`}
         >
@@ -91,15 +94,15 @@ export default function AdminSidebar() {
 
       {/* User + Logout */}
       <div className="px-3 py-4 border-t border-white/10 space-y-1">
-        <div className="flex items-center gap-3 px-4 py-2.5">
+        <Link to="/profile" className="flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-white/10 transition-colors" title="Open profile">
           <div className="w-8 h-8 rounded-full bg-rose-600 flex items-center justify-center text-sm font-bold shrink-0 text-white">
             {user?.name?.[0]?.toUpperCase() ?? 'A'}
           </div>
           <div className="overflow-hidden">
             <p className="text-sm font-medium text-white truncate">{user?.name || 'Admin'}</p>
-            <p className="text-xs text-rose-400 capitalize font-semibold">Administrator</p>
+            <p className="text-xs text-rose-400 capitalize font-semibold flex items-center gap-1"><UserRound size={11} />Administrator</p>
           </div>
-        </div>
+        </Link>
         <button onClick={handleLogout}
           className="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:bg-red-600 hover:text-white transition-colors">
           <LogOut size={17} />Logout

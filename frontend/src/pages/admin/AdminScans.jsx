@@ -180,7 +180,7 @@ export default function AdminScans() {
                           Review
                         </Link>
                       ) : (
-                        <Link to={`/inspections/${item.inspection_id || item.id}`}
+                        <Link to={`/dashboard/inspections/${item.inspection_id || item.id}`}
                           className="inline-flex items-center gap-1 text-xs text-blue-600 hover:underline font-medium"
                           target="_blank" rel="noreferrer">
                           <Eye size={12} />View
